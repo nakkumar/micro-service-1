@@ -25,7 +25,7 @@ RUN chown -R appuser:appgroup /usr/share/nginx/html \
     && touch /var/run/nginx.pid \
     && chown appuser:appgroup /var/run/nginx.pid  /run/nginx.pid
 
-# Use non-root userss
+# Use non-root usersss
 USER appuser
 
 EXPOSE 8080
