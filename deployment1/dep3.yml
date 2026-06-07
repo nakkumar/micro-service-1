@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-app3
+  labels:
+    app: react-app3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-app3
+  template:
+    metadata:
+      labels:
+        app: react-app3
+    spec:
+      containers:
+      - name: react-app3
+        image: nakkumar/testreact:35
+        ports:
+        - containerPort: 8080
+#        imagePullPolicy: Never
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 100
+          allowPrivilegeEscalation: false
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-app3-service
+spec:
+  type: NodePort
+  ports:
+  - name: http
+    port:  90
+    targetPort: 8080
+    nodePort: 30700
+    protocol: TCP
+  selector:
+    app: react-app3
