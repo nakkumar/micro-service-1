@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: react-app1
-        image: nakkumar/testreact:6
+        image: nakkumar/testreact:7
         ports:
         - containerPort: 8080
 #        imagePullPolicy: Never
